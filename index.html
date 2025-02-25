@@ -8,14 +8,16 @@
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            background-color: #f8f9fa;
+            background: linear-gradient(to right, #4b0082, #0000ff);
+            color: white;
             margin: 20px;
         }
         table {
             width: 50%;
-            margin: auto;
+            margin: 20px auto;
             border-collapse: collapse;
             background: white;
+            color: black;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
             overflow: hidden;
@@ -26,14 +28,14 @@
             text-align: center;
         }
         th {
-            background-color: #007bff;
+            background-color: #4b0082;
             color: white;
         }
         .message {
             margin-top: 20px;
             font-size: 18px;
             font-weight: bold;
-            color: #28a745;
+            color: #ffff66;
         }
     </style>
     <script>
@@ -46,26 +48,41 @@
                 "Touro 🐂", "Tigre 🐯", "Urso 🐻", "Veado 🦌", "Vaca 🐄"
             ];
             
-            let palpites = "";
+            let palpitesGrupo = "";
+            for (let i = 0; i < 2; i++) {
+                let grupo = Math.floor(Math.random() * 25) + 1;
+                palpitesGrupo += `<tr><td>${grupo}</td><td>${animais[grupo - 1]}</td></tr>`;
+            }
+            document.getElementById("palpitesGrupo").innerHTML = palpitesGrupo;
+            
+            let palpitesMilhar = "";
             for (let i = 0; i < 10; i++) {
                 let milhar = ("0000" + Math.floor(Math.random() * 10000)).slice(-4);
                 let grupo = Math.floor(Math.random() * 25) + 1;
-                palpites += `<tr><td>${milhar}</td><td>${grupo}</td><td>${animais[grupo - 1]}</td></tr>`;
+                palpitesMilhar += `<tr><td>${milhar}</td><td>${grupo}</td><td>${animais[grupo - 1]}</td></tr>`;
             }
-            
-            document.getElementById("palpites").innerHTML = palpites;
+            document.getElementById("palpitesMilhar").innerHTML = palpitesMilhar;
         }
     </script>
 </head>
 <body onload="gerarPalpites()">
     <h1>Palpites da Sorte</h1>
+    <h2>Palpites de Grupo</h2>
+    <table>
+        <tr>
+            <th>Grupo</th>
+            <th>Animal</th>
+        </tr>
+        <tbody id="palpitesGrupo"></tbody>
+    </table>
+    <h2>Palpites de Milhar</h2>
     <table>
         <tr>
             <th>Milhar</th>
             <th>Grupo</th>
             <th>Animal</th>
         </tr>
-        <tbody id="palpites"></tbody>
+        <tbody id="palpitesMilhar"></tbody>
     </table>
     <p class="message">Boa sorte! Que Deus te ajude a acertar no jogo. 🍀</p>
 </body>
