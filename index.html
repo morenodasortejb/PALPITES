@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palpites da Sorte</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f8f9fa;
+            margin: 20px;
+        }
+        table {
+            width: 50%;
+            margin: auto;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+        .message {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #28a745;
+        }
+    </style>
+    <script>
+        function gerarPalpites() {
+            const animais = [
+                "Avestruz 🕊️", "Águia 🦅", "Burro 🫏", "Borboleta 🦋", "Cachorro 🐶",
+                "Cabra 🐐", "Carneiro 🐏", "Camelo 🐪", "Cobra 🐍", "Coelho 🐰",
+                "Cavalo 🐴", "Elefante 🐘", "Galo 🐓", "Gato 🐱", "Jacaré 🐊",
+                "Leão 🦁", "Macaco 🐵", "Porco 🐷", "Pavão 🦚", "Peru 🦃",
+                "Touro 🐂", "Tigre 🐯", "Urso 🐻", "Veado 🦌", "Vaca 🐄"
+            ];
+            
+            let palpites = "";
+            for (let i = 0; i < 10; i++) {
+                let milhar = ("0000" + Math.floor(Math.random() * 10000)).slice(-4);
+                let grupo = Math.floor(Math.random() * 25) + 1;
+                palpites += `<tr><td>${milhar}</td><td>${grupo}</td><td>${animais[grupo - 1]}</td></tr>`;
+            }
+            
+            document.getElementById("palpites").innerHTML = palpites;
+        }
+    </script>
+</head>
+<body onload="gerarPalpites()">
+    <h1>Palpites da Sorte</h1>
+    <table>
+        <tr>
+            <th>Milhar</th>
+            <th>Grupo</th>
+            <th>Animal</th>
+        </tr>
+        <tbody id="palpites"></tbody>
+    </table>
+    <p class="message">Boa sorte! Que Deus te ajude a acertar no jogo. 🍀</p>
+</body>
+</html>
