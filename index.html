@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Palpites da Sorte</title>
+    <title>Palpites do Dia</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -13,7 +13,7 @@
             margin: 20px;
         }
         table {
-            width: 50%;
+            width: 60%;
             margin: 20px auto;
             border-collapse: collapse;
             background: white;
@@ -39,6 +39,14 @@
         }
     </style>
     <script>
+        function gerarData() {
+            const diasSemana = ["Domingo", "Segunda-Feira", "Terça-Feira", "Quarta-Feira", "Quinta-Feira", "Sexta-Feira", "Sábado"];
+            let hoje = new Date();
+            let diaSemana = diasSemana[hoje.getDay()];
+            let dataFormatada = `${diaSemana} ${hoje.getDate()}/${hoje.getMonth() + 1}/${hoje.getFullYear()}`;
+            document.getElementById("data").innerText = dataFormatada;
+        }
+        
         function gerarPalpites() {
             const animais = [
                 "Avestruz 🕊️", "Águia 🦅", "Burro 🫏", "Borboleta 🦋", "Cachorro 🐶",
@@ -48,42 +56,62 @@
                 "Touro 🐂", "Tigre 🐯", "Urso 🐻", "Veado 🦌", "Vaca 🐄"
             ];
             
-            let palpitesGrupo = "";
-            for (let i = 0; i < 2; i++) {
-                let grupo = Math.floor(Math.random() * 25) + 1;
-                palpitesGrupo += `<tr><td>${grupo}</td><td>${animais[grupo - 1]}</td></tr>`;
-            }
-            document.getElementById("palpitesGrupo").innerHTML = palpitesGrupo;
-            
             let palpitesMilhar = "";
             for (let i = 0; i < 10; i++) {
                 let milhar = ("0000" + Math.floor(Math.random() * 10000)).slice(-4);
                 let grupo = Math.floor(Math.random() * 25) + 1;
-                palpitesMilhar += `<tr><td>${milhar}</td><td>${grupo}</td><td>${animais[grupo - 1]}</td></tr>`;
+                palpitesMilhar += `<tr><td>${milhar}</td><td>${animais[grupo - 1]}</td></tr>`;
             }
             document.getElementById("palpitesMilhar").innerHTML = palpitesMilhar;
+            
+            let palpitesGrupo = "";
+            for (let i = 0; i < 4; i++) {
+                let grupo = Math.floor(Math.random() * 25) + 1;
+                palpitesGrupo += `<tr><td>${grupo}</td><td>${animais[grupo - 1]}</td></tr>`;
+            }
+            
+            let ternoGrupo = "";
+            for (let i = 0; i < 3; i++) {
+                let grupo = Math.floor(Math.random() * 25) + 1;
+                ternoGrupo += `<tr><td>${grupo}</td><td>${animais[grupo - 1]}</td></tr>`;
+            }
+            
+            let duqueDezena = "";
+            for (let i = 0; i < 3; i++) {
+                let dezena = ("00" + Math.floor(Math.random() * 100)).slice(-2);
+                let grupo = Math.floor(Math.random() * 25) + 1;
+                duqueDezena += `<tr><td>${dezena}</td><td>${animais[grupo - 1]}</td></tr>`;
+            }
+            
+            document.getElementById("palpitesGrupo").innerHTML = palpitesGrupo;
+            document.getElementById("ternoGrupo").innerHTML = ternoGrupo;
+            document.getElementById("duqueDezena").innerHTML = duqueDezena;
         }
     </script>
 </head>
-<body onload="gerarPalpites()">
-    <h1>Palpites da Sorte</h1>
-    <h2>Palpites de Grupo</h2>
+<body onload="gerarData(); gerarPalpites()">
+    <h1>PALPITES DO DIA - <span id="data"></span></h1>
+    
+    <h2>PALPITES MILHAR E CENTENA</h2>
     <table>
-        <tr>
-            <th>Grupo</th>
-            <th>Animal</th>
-        </tr>
-        <tbody id="palpitesGrupo"></tbody>
-    </table>
-    <h2>Palpites de Milhar</h2>
-    <table>
-        <tr>
-            <th>Milhar</th>
-            <th>Grupo</th>
-            <th>Animal</th>
-        </tr>
+        <tr><th>Milhar</th><th>Animal</th></tr>
         <tbody id="palpitesMilhar"></tbody>
     </table>
+    
+    <h2>PALPITE GRUPO - TERNO DE GRUPO - DUQUE DE DEZENA</h2>
+    <table>
+        <tr><th>Grupo</th><th>Animal</th></tr>
+        <tbody id="palpitesGrupo"></tbody>
+    </table>
+    <table>
+        <tr><th>Terno de Grupo</th><th>Animal</th></tr>
+        <tbody id="ternoGrupo"></tbody>
+    </table>
+    <table>
+        <tr><th>Duque de Dezena</th><th>Animal</th></tr>
+        <tbody id="duqueDezena"></tbody>
+    </table>
+    
     <p class="message">Boa sorte! Que Deus te ajude a acertar no jogo. 🍀</p>
 </body>
 </html>
