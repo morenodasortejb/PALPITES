@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Palpites do Dia</title>
+    <title>PALPITES DO DIA</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -11,6 +11,15 @@
             background: linear-gradient(to right, #4b0082, #0000ff);
             color: white;
             margin: 20px;
+        }
+        #data {
+            background-color: black;
+            color: white;
+            padding: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 10px;
         }
         table {
             width: 60%;
@@ -21,6 +30,7 @@
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
             overflow: hidden;
+            text-transform: uppercase;
         }
         th, td {
             padding: 10px;
@@ -40,7 +50,7 @@
     </style>
     <script>
         function gerarData() {
-            const diasSemana = ["Domingo", "Segunda-Feira", "Terça-Feira", "Quarta-Feira", "Quinta-Feira", "Sexta-Feira", "Sábado"];
+            const diasSemana = ["DOMINGO", "SEGUNDA-FEIRA", "TERÇA-FEIRA", "QUARTA-FEIRA", "QUINTA-FEIRA", "SEXTA-FEIRA", "SÁBADO"];
             let hoje = new Date();
             let diaSemana = diasSemana[hoje.getDay()];
             let dataFormatada = `${diaSemana} ${hoje.getDate()}/${hoje.getMonth() + 1}/${hoje.getFullYear()}`;
@@ -49,18 +59,17 @@
         
         function gerarPalpites() {
             const animais = [
-                "Avestruz 🕊️", "Águia 🦅", "Burro 🫏", "Borboleta 🦋", "Cachorro 🐶",
-                "Cabra 🐐", "Carneiro 🐏", "Camelo 🐪", "Cobra 🐍", "Coelho 🐰",
-                "Cavalo 🐴", "Elefante 🐘", "Galo 🐓", "Gato 🐱", "Jacaré 🐊",
-                "Leão 🦁", "Macaco 🐵", "Porco 🐷", "Pavão 🦚", "Peru 🦃",
-                "Touro 🐂", "Tigre 🐯", "Urso 🐻", "Veado 🦌", "Vaca 🐄"
+                "AVESTRUZ 🕊️", "ÁGUIA 🦅", "BURRO 🫏", "BORBOLETA 🦋", "CACHORRO 🐶",
+                "CABRA 🐐", "CARNEIRO 🐏", "CAMELO 🐪", "COBRA 🐍", "COELHO 🐰",
+                "CAVALO 🐴", "ELEFANTE 🐘", "GALO 🐓", "GATO 🐱", "JACARÉ 🐊",
+                "LEÃO 🦁", "MACACO 🐵", "PORCO 🐷", "PAVÃO 🦚", "PERU 🦃",
+                "TOURO 🐂", "TIGRE 🐯", "URSO 🐻", "VEADO 🦌", "VACA 🐄"
             ];
             
             let palpitesMilhar = "";
             for (let i = 0; i < 10; i++) {
                 let milhar = ("0000" + Math.floor(Math.random() * 10000)).slice(-4);
-                let grupo = Math.floor(Math.random() * 25) + 1;
-                palpitesMilhar += `<tr><td>${milhar}</td><td>${animais[grupo - 1]}</td></tr>`;
+                palpitesMilhar += `<tr><td>${milhar}</td></tr>`;
             }
             document.getElementById("palpitesMilhar").innerHTML = palpitesMilhar;
             
@@ -90,28 +99,29 @@
     </script>
 </head>
 <body onload="gerarData(); gerarPalpites()">
-    <h1>PALPITES DO DIA - <span id="data"></span></h1>
+    <h1>PALPITES DO DIA</h1>
+    <div id="data"></div>
     
     <h2>PALPITES MILHAR E CENTENA</h2>
     <table>
-        <tr><th>Milhar</th><th>Animal</th></tr>
+        <tr><th>MILHAR</th></tr>
         <tbody id="palpitesMilhar"></tbody>
     </table>
     
     <h2>PALPITE GRUPO - TERNO DE GRUPO - DUQUE DE DEZENA</h2>
     <table>
-        <tr><th>Grupo</th><th>Animal</th></tr>
+        <tr><th>GRUPO</th><th>ANIMAL</th></tr>
         <tbody id="palpitesGrupo"></tbody>
     </table>
     <table>
-        <tr><th>Terno de Grupo</th><th>Animal</th></tr>
+        <tr><th>TERNO DE GRUPO</th><th>ANIMAL</th></tr>
         <tbody id="ternoGrupo"></tbody>
     </table>
     <table>
-        <tr><th>Duque de Dezena</th><th>Animal</th></tr>
+        <tr><th>DUQUE DE DEZENA</th><th>ANIMAL</th></tr>
         <tbody id="duqueDezena"></tbody>
     </table>
     
-    <p class="message">Boa sorte! Que Deus te ajude a acertar no jogo. 🍀</p>
+    <p class="message">BOA SORTE! QUE DEUS TE AJUDE A ACERTAR NO JOGO. 🍀</p>
 </body>
 </html>
