@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PALPITES DO DIA</title>
+    <title>🍀 PALPITES DO DIA 🍀</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -69,14 +69,15 @@
             let palpitesMilhar = "";
             for (let i = 0; i < 10; i++) {
                 let milhar = ("0000" + Math.floor(Math.random() * 10000)).slice(-4);
-                palpitesMilhar += `<tr><td>${milhar}</td></tr>`;
+                let grupo = Math.floor(milhar / 4) % 25; // Estimativa do grupo baseado no número
+                palpitesMilhar += `<tr><td>🍀 ${milhar}</td><td>${animais[grupo]}</td></tr>`;
             }
             document.getElementById("palpitesMilhar").innerHTML = palpitesMilhar;
             
             let palpitesGrupo = "";
             for (let i = 0; i < 4; i++) {
                 let grupo = Math.floor(Math.random() * 25) + 1;
-                palpitesGrupo += `<tr><td>${grupo}</td><td>${animais[grupo - 1]}</td></tr>`;
+                palpitesGrupo += `<tr><td>🍀 ${grupo}</td><td>${animais[grupo - 1]}</td></tr>`;
             }
             
             document.getElementById("palpitesGrupo").innerHTML = palpitesGrupo;
@@ -84,21 +85,21 @@
     </script>
 </head>
 <body onload="gerarData(); gerarPalpites()">
-    <h1>PALPITES DO DIA</h1>
+    <h1>🍀 PALPITES DO DIA 🍀</h1>
     <div id="data"></div>
     
-    <h2>PALPITES MILHAR E CENTENA</h2>
+    <h2>🍀 PALPITES MILHAR E CENTENA 🍀</h2>
     <table>
-        <tr><th>MILHAR</th></tr>
+        <tr><th>MILHAR</th><th>ANIMAL</th></tr>
         <tbody id="palpitesMilhar"></tbody>
     </table>
     
-    <h2>PALPITE DO GRUPO</h2>
+    <h2>🍀 PALPITES GRUPO 🍀</h2>
     <table>
         <tr><th>GRUPO</th><th>ANIMAL</th></tr>
         <tbody id="palpitesGrupo"></tbody>
     </table>
     
-    <p class="message">BOA SORTE! QUE DEUS TE AJUDE A ACERTAR NO JOGO. 🍀</p>
+    <p class="message">🍀 BOA SORTE! QUE DEUS TE AJUDE A ACERTAR NO JOGO. 🍀🍀🍀</p>
 </body>
 </html>
