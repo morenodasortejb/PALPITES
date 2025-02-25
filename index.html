@@ -79,22 +79,7 @@
                 palpitesGrupo += `<tr><td>${grupo}</td><td>${animais[grupo - 1]}</td></tr>`;
             }
             
-            let ternoGrupo = "";
-            for (let i = 0; i < 3; i++) {
-                let grupo = Math.floor(Math.random() * 25) + 1;
-                ternoGrupo += `<tr><td>${grupo}</td><td>${animais[grupo - 1]}</td></tr>`;
-            }
-            
-            let duqueDezena = "";
-            for (let i = 0; i < 3; i++) {
-                let dezena = ("00" + Math.floor(Math.random() * 100)).slice(-2);
-                let grupo = Math.floor(Math.random() * 25) + 1;
-                duqueDezena += `<tr><td>${dezena}</td><td>${animais[grupo - 1]}</td></tr>`;
-            }
-            
             document.getElementById("palpitesGrupo").innerHTML = palpitesGrupo;
-            document.getElementById("ternoGrupo").innerHTML = ternoGrupo;
-            document.getElementById("duqueDezena").innerHTML = duqueDezena;
         }
     </script>
 </head>
@@ -108,18 +93,10 @@
         <tbody id="palpitesMilhar"></tbody>
     </table>
     
-    <h2>PALPITE GRUPO - TERNO DE GRUPO - DUQUE DE DEZENA</h2>
+    <h2>PALPITE DO GRUPO</h2>
     <table>
         <tr><th>GRUPO</th><th>ANIMAL</th></tr>
         <tbody id="palpitesGrupo"></tbody>
-    </table>
-    <table>
-        <tr><th>TERNO DE GRUPO</th><th>ANIMAL</th></tr>
-        <tbody id="ternoGrupo"></tbody>
-    </table>
-    <table>
-        <tr><th>DUQUE DE DEZENA</th><th>ANIMAL</th></tr>
-        <tbody id="duqueDezena"></tbody>
     </table>
     
     <p class="message">BOA SORTE! QUE DEUS TE AJUDE A ACERTAR NO JOGO. 🍀</p>
